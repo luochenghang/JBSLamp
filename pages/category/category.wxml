@@ -49,7 +49,8 @@
             <text></text>
           </view>
         </view>
-        <image data-id="{{item.id}}" bindtap="addShopCar" class="car" src="/images/icon/car.svg"></image>
+        <image data-id="{{item.id}}" bindtap="addShopCar" class="car" src="/images/icon/fav1.svg"></image>
+        <!-- /images/icon/fav0 -->
       </view>
 
       <view hidden="{{loadingMoreHidden ? true : false}}" class="weui-loadmore weui-loadmore_line" style='margin-top:60rpx;margin-bottom:30rpx;'>

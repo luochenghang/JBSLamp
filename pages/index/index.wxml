@@ -11,10 +11,10 @@
   </view>
 </navigator> -->
 <view class="search">
-    <input type="text" placeholder="输入商品名称搜索" value="{{name}}" bindinput="bindinput" bindconfirm="bindconfirm"></input>
+    <input type="text" placeholder="输入商品名称搜索" value="{{inputVal}}" bindinput="bindinput" bindconfirm="bindconfirm"></input>
     <image src="/images/icon/search.svg" bindtap="goSearch"></image>
   </view>
-  <view wx:if="{{goodsDynamic}}" class="goodsDynamic">
+  <view wx:if="{{goodsDynamic.length!=0}}" class="goodsDynamic">
     <swiper class="swiper2" autoplay circular vertical>
       <navigator wx:for="{{goodsDynamic}}" wx:key="index" url="/pages/goods-details/index?id={{item.goodsId}}">
         <swiper-item>
@@ -30,7 +30,7 @@
 <view class="swiper-container">
   <swiper class="swiper1" indicator-dots="true" indicator-active-color="#fff" autoplay circular>
     <swiper-item wx:for="{{bannerList}}" wx:key="id">
-      <image  mode="aspectFill" bindtap="tapBanner" data-url="{{item.url}}" src="{{item.url}}" />
+      <image  mode="aspectFill"   src="{{item.url}}" />
     </swiper-item>
   </swiper>
   
@@ -50,7 +50,7 @@
       </view>
       <view class="goods-title">{{item.title}}</view>
       <view style='display:flex;'>
-        <view class="goods-price">¥ {{item.sellPrice}}</view>
+        <view class="goods-price">¥ {{we.toFixed(item.sellPrice)}}</view>
         
       </view>
     </view>
@@ -60,5 +60,15 @@
   </view>
 </view>
 <view class='coupons-float' bindtap="goCoupons">
-  <image src="/images/gift.png"></image>
+  <image src="/images/top.png"></image>
 </view>
+
+<!-- 保留两位小数 -->
+<wxs module="we">
+ var toFixed = function (value) {
+ return value.toFixed(2);
+}
+module.exports = {
+  toFixed :toFixed
+}
+</wxs>

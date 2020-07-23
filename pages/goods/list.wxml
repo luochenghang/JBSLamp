@@ -1,0 +1,51 @@
+<view class="header">
+  <view class="search">
+    <input type="text" placeholder="输入搜索关键词" value="{{name}}" bindinput="bindinput" bindconfirm="bindconfirm"></input>
+    <image src="/images/icon/search.svg"></image>
+  </view>
+  <image class="show-type" src="/images/icon/list{{listType}}.svg" bindtap="changeShowType"></image>
+</view>
+<view class="line"></view>
+<view class="filters">
+  <view class="item {{orderBy==''?'active':''}}" data-val="" bindtap="filter">综合</view>
+  <view class="item {{orderBy=='sellCount'?'active':''}}" data-val="sellCount" bindtap="filter">销量</view>
+  <view class="item {{orderBy=='sellPrice'?'active':''}}" data-val="sellPrice" bindtap="filter">价格</view>
+</view>
+<block wx:if="{{listType == 1}}">
+  <view class="list1" wx:for="{{goodsList}}" wx:key="id">
+    <navigator url="/pages/goods-details/index?id={{item.id}}"><image class="img" mode="aspectFill" src="{{item.coverImg}}"></image></navigator>
+    <view class="goods-info">
+      <navigator url="/pages/goods-details/index?id={{item.id}}"><view class="title ellipsis">{{item.title}}</view> 
+      <view class="price">¥ {{we.toFixed(item.sellPrice)}}</view>
+      <view class="buy-info">
+        <view class="num">已售出{{item.sellCount}}件</view>
+      </view>
+     </navigator>
+    </view>
+   
+  </view>
+</block>
+<view wx:if="{{listType == 2}}" class="list2-box">
+  <view class="list2" wx:for="{{goodsList}}" wx:key="id">
+    <navigator url="/pages/goods-details/index?id={{item.id}}"><image class="img" mode="aspectFill" src="{{item.coverImg}}"></image></navigator>
+    <view class="goods-info">
+      <navigator url="/pages/goods-details/index?id={{item.id}}"><view class="title type2_ellipsis">{{item.title}}</view>
+      <view class="price">¥ {{we.toFixed(item.sellPrice)}}</view>
+      <view class="buy-info">
+        <view class="num">已售出{{item.sellCount}}件</view>
+      </view>
+       </navigator>
+    </view>
+    
+  </view>
+</view>
+
+<!-- 保留两位小数 -->
+<wxs module="we">
+ var toFixed = function (value) {
+ return value.toFixed(2);
+}
+module.exports = {
+  toFixed :toFixed
+}
+</wxs>

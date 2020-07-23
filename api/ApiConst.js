@@ -6,3 +6,5 @@ export const getPageAllGoods = baseUrl + 'lampApp/v1/getPageAllGoods' // 获取�
 export const getTop5GoodsDynamic = baseUrl + 'lampApp/v1/getTop5GoodsDynamic' // 获取最新的前五个订单
 
 export const getAllGoodsType = baseUrl + "lampApp/v1/getAllGoodsType"//查询全部的商品类型
+
+export const getGoodsById = baseUrl + "lampApp/v1/getGoodsById"//查询商品详细信息

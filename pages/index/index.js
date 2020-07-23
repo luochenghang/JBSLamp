@@ -30,7 +30,7 @@ Page({
 
     swiperCurrent: 0, // 当前滑块的index
     hiddenContactPop: true,
-    bannerList: [{ "id": 3, "objId": 0, "type": 1, "typeDesc": "首页banner轮播图！", "status": 0, "sort": 3, "url": "https://luoch.cn/sources/2020-07-09/7c81949cb7cc4381b079b48881b12601.jpg", "createDate": "2020-07-09 00:14:19" }, { "id": 4, "objId": 0, "type": 1, "typeDesc": "首页banner轮播图！", "status": 1, "sort": 3, "url": "https://luoch.cn/sources/2020-07-09/95a6586ca55844e58dfabadd6ecfaca4.jpg", "createDate": "2020-07-09 00:14:46" }, { "id": 5, "objId": 0, "type": 1, "typeDesc": "首页banner轮播图！", "status": 1, "sort": 1, "url": "https://luoch.cn/sources/2020-07-09/766cf3b73f0b4ba08aa46b06eeb98ba1.jpg", "createDate": "2020-07-09 00:22:31" }, { "id": 6, "objId": 0, "type": 1, "typeDesc": "首页banner轮播图！", "status": 1, "sort": 3, "url": "https://luoch.cn/sources/2020-07-09/10d2428377e34c2d9a56e247d46f1e87.jpg", "createDate": "2020-07-09 00:23:52" }],
+    bannerList: [],
     totalPage: 0,
     curretnPage: 0
   },
@@ -41,14 +41,7 @@ Page({
       url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
     })
   },
-  tapBanner: function(e) {
-    const url = e.currentTarget.dataset.url
-    if (url) {
-      wx.navigateTo({
-        url
-      })
-    }
-  },
+ 
 
   onLoad: function(e) {
     wx.showShareMenu({
@@ -81,6 +74,7 @@ Page({
     })
   },
   onShow: function(e){
+    
   },
 
    goodsDynamic(){
@@ -170,11 +164,13 @@ Page({
     this.setData({
       inputVal: e.detail.value
     })
+    console.log(this.data.inputVal)
     wx.navigateTo({
       url: '/pages/goods/list?name=' + this.data.inputVal,
     })
   },
   goSearch(){
+    console.log(this.data.inputVal)
     wx.navigateTo({
       url: '/pages/goods/list?name=' + this.data.inputVal,
     })

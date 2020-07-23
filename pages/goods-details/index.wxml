@@ -1,0 +1,62 @@
+<view class="container">
+  <view class="swiper-container">
+    <swiper class="swiper_box" indicator-dots="true" indicator-active-color="#fff" >
+      <swiper-item wx:if="{{goodsDetail.bannerImg.length != 0}}" wx:for="{{goodsDetail.bannerImg}}" wx:key="id">
+        <image src="{{item.url}}" class="slide-image" mode="aspectFill" lazy-load="true" />
+      </swiper-item>   
+      <swiper-item wx:if="{{goodsDetail.bannerImg.length == 0}}">
+        <image src="/images/no_resources.jpg" class="slide-image" mode="aspectFill" lazy-load="true" />
+      </swiper-item>   
+    </swiper>
+  </view>
+  <view class="goods-info">
+    <view class="goods-title">{{goodsDetail.title}}</view>
+   
+    <view class="goods-profile">
+      <view class="p"><text>¥</text> {{we.toFixed(goodsDetail.sellPrice)}}</view>
+      <view class="goods-price" style='color:#aaa;text-decoration:line-through;padding: 15rpx 0rpx 0rpx 15rpx;'><text>¥</text> {{we.toFixed(goodsDetail.sellPrice*1.1)}}</view>
+      <view class="r">{{goodsDetail.sellCount}}人已买</view>
+    </view>
+    <view class="goods-info-fx">
+      <view class='item'>
+        <image src='/images/share/share1.png'></image>
+        <button open-type='share'></button>
+      </view>
+      <view class='item' bindtap="drawSharePic">
+        <image src='/images/share/share2.png'></image>
+      </view>
+    </view>    
+  </view>
+
+
+<view class="goods-des-info">
+    <view class="label-title">商品介绍</view>
+    <view class="goods-text">
+      <image wx:if="{{goodsDetail.detailImg.length != 0}}" wx:for="{{goodsDetail.detailImg}}" wx:key="id" width="100%" bindtap='previewImg' data-src='{{item.url}}' src="{{item.url}}" />
+      <image wx:if="{{goodsDetail.detailImg.length == 0}}" src="/images/no_resources.jpg" />
+    </view>
+  </view>
+
+  <view wx:if="{{!curGoodsKanjia}}" class="footer-box">
+    <view class="contact">
+      <button type="primary" open-type="contact" />
+      <image src="/images/icon/kf.svg"></image>
+    </view>
+   
+    <image bindtap="addPreOrder" class="fav-icon" src="/images/icon/fav{{faved?'1':'0'}}.svg"></image>
+    <view  class="join-shop-cart" bindtap="addPreOrder">立即收藏</view>
+    <view  class="now-buy"  bindtap="makePhoneCall">联系店家</view>
+    
+  </view>
+
+</view>
+
+<!-- 保留两位小数 -->
+<wxs module="we">
+ var toFixed = function (value) {
+ return value.toFixed(2);
+}
+module.exports = {
+  toFixed :toFixed
+}
+</wxs>
