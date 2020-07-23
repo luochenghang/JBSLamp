@@ -1,0 +1,90 @@
+<view class="container">
+  <view class='userbox' style='background: -webkit-linear-gradient(top, rgba({{bgRed}},{{bgGreen}},{{bgBlue}}, 1), rgba({{bgRed}},{{bgGreen}},{{bgBlue}}, 0.3))'>
+    <view wx:if="{{userInfo}}" class="userinfo">
+      <wxc-avatar class="userinfo-avatar" src="{{ userInfo.avatarUrl }}"> </wxc-avatar>
+      <view style='width:30rpx;'></view>
+      <view class='userinfo-text'>
+        <text class="userinfo-nickname">{{ userInfo.nickName }}</text>
+        <view style='height:10rpx;'></view>
+        
+      </view>
+
+    </view>
+    <view wx:else class="userinfo">
+      <wxc-avatar class="userinfo-avatar-no" mold="square" src="https://cdn.it120.cc/apifactory/2018/06/10/527a0d6e3b3f1ffc32748193d743da26.jpg" bindtap="relogin"> </wxc-avatar>
+      <view class='userinfo-text'>
+        <text class="userinfo-nickname"> 欢迎您 ，点我登陆 </text>
+        <view style='height:10rpx;'></view>
+      </view>
+    </view>
+    <view class='userInfoMask'></view>
+  </view>
+
+  
+
+  <view class="user-menu">
+    <view class="item">
+      <navigator url="/pages/my/order-list/index" hover-class="none" class="a">
+        <wxc-icon type='feedback' size='{{iconSize}}' color='{{iconColor}}' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
+        <text class="txt">订单记录</text>
+      </navigator>
+    </view>
+    <view class="item">
+      <navigator url="/pages/select-address/index" hover-class="none" class="a">
+        <wxc-icon type='star' size='{{iconSize}}' color='{{iconColor}}' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
+        <text class="txt">收藏中心</text>
+      </navigator>
+    </view>
+    <view class="item no-border-right">
+      <navigator url="/pages/my/location/location" hover-class="none" class="a">
+        <wxc-icon type='location' size='{{iconSize}}' color='{{iconColor}}' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
+        <text class="txt">到店里</text>
+      </navigator>
+    </view>
+    <view class="item">
+      <navigator url="/pages/target/index" hover-class="none" class="a">
+        <wxc-icon type='home' size='{{iconSize}}' color='{{iconColor}}' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
+        <text class="txt">店铺介绍</text>
+      </navigator>
+    </view>
+    <view class="item">
+      <navigator url="" hover-class="none" class="a">
+        <wxc-icon type='weixin' size='{{iconSize}}' color='{{iconColor}}' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
+        <text class="txt">加入群聊</text>
+      </navigator>
+    </view>
+    <!-->
+    <view class="item no-border-right">
+      <navigator url="/pages/target/index" hover-class="none" class="a">
+        <wxc-icon type='share' size='{{iconSize}}' color='lightgray' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
+        <text class="txt" style='color:lightgray;text-decoration: line-through;'>足迹</text>
+      </navigator>
+    </view>
+    -->
+    <view class="item no-border-right">
+      <navigator url="/pages/target/index" hover-class="none" class="a">
+        <wxc-icon type='share' size='{{iconSize}}' color='{{iconColor}}' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
+        <text class="txt">分享好友</text>
+      </navigator>
+    </view>
+    <view class="item item-bottom" bindtap='makePhoneCall'>
+      <navigator url="" hover-class="none" class="a">
+        <wxc-icon type='group' size='{{iconSize}}' color='{{iconColor}}' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
+        <text class="txt">联系客服</text>
+      </navigator>
+    </view>
+    <view class="item item-bottom" bindtap="aboutUs">
+      <navigator url="url" hover-class="none" class="a">
+        <wxc-icon type='help' size='{{iconSize}}' color='{{iconColor}}' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
+        <text class="txt">关于我们</text>
+      </navigator>
+    </view>
+    <view class="item no-border-bottom">
+      <navigator url="/pages/my/feedback/feedback" hover-class="none" class="a">
+        <wxc-icon type='no' size='{{iconSize}}' color='{{iconColor}}' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
+        <text class="txt">退出登录</text>
+      </navigator>
+    </view>
+  </view>
+
+</view>

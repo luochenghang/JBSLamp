@@ -1,0 +1,5 @@
+<!--pages/authorization/authorization.wxml-->
+<view class="container">
+  <image src="/imgs/authorization-pic-bg.svg"></image>
+  <button class="authorization-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">确认授权</button>
+</view>

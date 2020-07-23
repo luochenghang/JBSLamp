@@ -1,0 +1,64 @@
+<!-- <navigator url="/pages/shop/select">
+  <view wx:if="{{shopInfo}}" class="shops-container">
+    <view class="l">
+      <image src="/images/order-details/icon-address.png"></image>
+      <text>{{shopInfo.name}}</text>
+    </view>
+    <view class="r">
+      <text>切换门店</text>
+      <image src="/images/icon/next.png"></image>
+    </view>
+  </view>
+</navigator> -->
+<view class="search">
+    <input type="text" placeholder="输入商品名称搜索" value="{{name}}" bindinput="bindinput" bindconfirm="bindconfirm"></input>
+    <image src="/images/icon/search.svg" bindtap="goSearch"></image>
+  </view>
+  <view wx:if="{{goodsDynamic}}" class="goodsDynamic">
+    <swiper class="swiper2" autoplay circular vertical>
+      <navigator wx:for="{{goodsDynamic}}" wx:key="index" url="/pages/goods-details/index?id={{item.goodsId}}">
+        <swiper-item>
+          <view class="goodsDynamic-item">
+            <!-- <image mode="aspectFill" src="{{item.avatarUrl}}"></image> -->
+            <text>{{item.userName}} 购买了 {{item.title}}</text>
+          </view>
+        </swiper-item>
+      </navigator>
+    </swiper>
+  </view>
+  
+<view class="swiper-container">
+  <swiper class="swiper1" indicator-dots="true" indicator-active-color="#fff" autoplay circular>
+    <swiper-item wx:for="{{bannerList}}" wx:key="id">
+      <image  mode="aspectFill" bindtap="tapBanner" data-url="{{item.url}}" src="{{item.url}}" />
+    </swiper-item>
+  </swiper>
+  
+</view>
+
+<view class="container">
+  
+
+  <view class='space'></view>
+  <view class="weui-loadmore weui-loadmore_line">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">商品列表</view>
+  </view>
+  <view class="goods-container">
+    <view class="goods-box" wx:for="{{goodsList}}" wx:key="id" bindtap="toDetailsTap" data-id="{{item.id}}">
+      <view class="img-box">
+        <image src="{{item.coverImg}}" class="image" mode="aspectFill" lazy-load="true" />
+      </view>
+      <view class="goods-title">{{item.title}}</view>
+      <view style='display:flex;'>
+        <view class="goods-price">¥ {{item.sellPrice}}</view>
+        
+      </view>
+    </view>
+  </view>
+  <view hidden="{{loadingMoreHidden ? true : false}}" class="weui-loadmore weui-loadmore_line" style='margin-top:60rpx;margin-bottom:30rpx;'>
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多啦</view>
+  </view>
+</view>
+<view class='coupons-float' bindtap="goCoupons">
+  <image src="/images/gift.png"></image>
+</view>

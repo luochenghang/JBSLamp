@@ -1,0 +1,61 @@
+<view class="container">
+  <view class="search">
+    <input type="text" placeholder="输入搜索关键词" value="{{name}}" bindinput="bindinput" bindconfirm="bindconfirm"></input>
+    <image src="/images/icon/search.svg"></image>
+  </view>
+  <view class="content-container">
+    <scroll-view class="category-container" scroll-y="true" scroll-with-animation="true">
+      <view class="category {{categorySelected.id==category.id?'active':''}}" wx:for="{{categories}}" wx:for-item="category" wx:key="id" data-id="{{category.id}}" bindtap="onCategoryClick">
+        <view class="name {{categorySelected.id==category.id?'active':''}}">{{category.name}}</view>
+      </view>
+    </scroll-view>
+    <scroll-view class="goods-container" scroll-y="true" scroll-top="{{scrolltop}}">
+      <view wx:if="{{currentGoods.length == 0}}" class="no-data">
+        <view class="line"></view>
+        <view class="txt">暂无商品</view>
+        <view class="line"></view>
+      </view>
+      <!-- <block wx:for="{{categories}}" wx:key="id" wx:if="{{item.pid == categorySelected.id}}">
+        <navigator url="/pages/goods/list?categoryId={{item.id}}">
+          <view class="no-data medium-category">
+            <view class="line"></view>
+            <view class="txt">{{item.name}}</view>
+            <view class="line"></view>
+          </view>
+        </navigator>
+        <view class="small-category-box">
+          <navigator wx:for="{{categories}}" wx:for-item="small" wx:key="id" wx:if="{{small.pid == item.id}}" url="/pages/goods/list?categoryId={{small.id}}">
+            <view class="small-category">
+              <image mode="aspectFill" src="{{small.icon}}"></image>
+              <view>{{small.name}}</view>
+            </view>
+          </navigator>
+        </view>
+      </block> -->
+      
+      <view wx:if="{{currentGoods.length != 0}}" class="goods" wx:for="{{currentGoods}}" wx:key="id">
+        <image mode="aspectFill" class="pic" src="{{item.coverImg}}" data-id='{{item.id}}' bindtap="toDetailsTap">
+          <!-- <image class='fresh-tag' src="/images/goods-description/fresh.png"></image> -->
+        </image>
+        <view class="name ellipsis" data-id='{{item.id}}' bindtap="toDetailsTap">{{item.title}}</view>
+        <view class='soldInfo'>
+          <view class='good-price-box'>
+            <text class="price">¥{{item.sellPrice}}</text>
+          </view>
+        </view>
+        <view class='soldInfo'>
+          <view class='good-sales-box'>
+            <text class="number">已售 {{item.sellCount}}件</text>
+            <text></text>
+          </view>
+        </view>
+        <image data-id="{{item.id}}" bindtap="addShopCar" class="car" src="/images/icon/car.svg"></image>
+      </view>
+
+      <view hidden="{{loadingMoreHidden ? true : false}}" class="weui-loadmore weui-loadmore_line" style='margin-top:60rpx;margin-bottom:30rpx;'>
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多啦</view>
+  </view>
+    </scroll-view>
+  </view>
+</view>
+
