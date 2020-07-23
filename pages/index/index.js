@@ -56,7 +56,7 @@ Page({
     })    
     this.initBanners();
     this.goodsDynamic();
-    this.getGoodsList();
+   // this.getGoodsList();
   },
 
    initBanners(){
@@ -170,11 +170,13 @@ Page({
     this.setData({
       inputVal: e.detail.value
     })
+    console.log(this.data.inputVal)
     wx.navigateTo({
       url: '/pages/goods/list?name=' + this.data.inputVal,
     })
   },
   goSearch(){
+    console.log(this.data.inputVal)
     wx.navigateTo({
       url: '/pages/goods/list?name=' + this.data.inputVal,
     })
