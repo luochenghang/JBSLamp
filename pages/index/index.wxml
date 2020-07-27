@@ -61,6 +61,7 @@
 </view>
 <view class='coupons-float' bindtap="goCoupons">
   <image src="/images/top.png"></image>
+<<<<<<< HEAD
 </view>
 
 <!-- 保留两位小数 -->
@@ -72,3 +73,6 @@ module.exports = {
   toFixed :toFixed
 }
 </wxs>
+=======
+</view>
+>>>>>>> 85530990742952d07eff28d86bc58b8b1385a49e

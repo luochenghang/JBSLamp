@@ -7,7 +7,10 @@ Page({
     wxlogin: true,
 
     goodsDetail: {},
+<<<<<<< HEAD
     goodsId: 0,
+=======
+>>>>>>> 85530990742952d07eff28d86bc58b8b1385a49e
     hasMoreSelect: false,
     selectSize: null,
     selectSizePrice: 0,
@@ -24,6 +27,7 @@ Page({
     canSubmit: false, //  选中规格尺寸时候是否允许加入购物车
     shopType: "addShopCar", //购物类型，加入购物车或立即购买，默认为加入购物车
   },
+<<<<<<< HEAD
   onLoad: function (options) {
     this.setData({
       goodsId: options.id
@@ -80,4 +84,7 @@ Page({
       urls: imgList // 需要预览的图片http链接列表
     })
   },
+=======
+
+>>>>>>> 85530990742952d07eff28d86bc58b8b1385a49e
 })

@@ -59,7 +59,11 @@ page,view,image,input {
   height: 220rpx;
   display: flex;
   background: #fff;
+<<<<<<< HEAD
   /* border-radius: 30rpx; */
+=======
+  border-radius: 30rpx;
+>>>>>>> 85530990742952d07eff28d86bc58b8b1385a49e
   overflow: hidden;
   position: relative;
 }
@@ -77,6 +81,7 @@ page,view,image,input {
   font-size: 30rpx;
 }
 .ellipsis {
+<<<<<<< HEAD
   /* display: -webkit-box; */
   -webkit-line-clamp: 2;
   overflow: hidden;
@@ -88,24 +93,36 @@ page,view,image,input {
 }
 .type2_ellipsis {
   /* display: -webkit-box; */
+=======
+  display: -webkit-box;
+>>>>>>> 85530990742952d07eff28d86bc58b8b1385a49e
   -webkit-line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
   word-break: break-all;
   white-space: nowrap; /* 不换行 */
+<<<<<<< HEAD
   width: 100%;
+=======
+>>>>>>> 85530990742952d07eff28d86bc58b8b1385a49e
 }
 .list1 .goods-info .price {
   color: #FF3B30;
   font-size: 34rpx;
+<<<<<<< HEAD
   margin-top: 10rpx;
+=======
+>>>>>>> 85530990742952d07eff28d86bc58b8b1385a49e
 }
 .list1 .goods-info .buy-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
+<<<<<<< HEAD
   margin-top: 10rpx; 
+=======
+>>>>>>> 85530990742952d07eff28d86bc58b8b1385a49e
 }
 .list1 .goods-info .buy-info .num {
   font-size:24rpx;
@@ -130,7 +147,11 @@ page,view,image,input {
   margin: 16rpx 0;
   width: 350rpx;
   background: #fff;
+<<<<<<< HEAD
   /* border-radius: 30rpx; */
+=======
+  border-radius: 30rpx;
+>>>>>>> 85530990742952d07eff28d86bc58b8b1385a49e
   overflow: hidden;
   position: relative;
 }
