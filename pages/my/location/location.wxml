@@ -1,12 +1,6 @@
 <view class='shopInfo'>
   <view class='shopname'>
-    家贝斯照明：湖北省天门市景天建材市场附件
-  </view>
-  <view class='shopconnect'>
-    手机号：******(罗女士)
-  </view>
-  <view style='margin-left: 20rpx; width: 90%; height: 50rpx; font-size: 28rpx; align-items: center;'>
-    (可直接在"我的"-->"联系客服"里联系店家)
+    地址：湖北省天门市景天建材市场附件
   </view>
 </view>
 <view class="mainView">

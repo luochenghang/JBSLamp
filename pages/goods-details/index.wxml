@@ -13,7 +13,7 @@
     <view class="goods-title">{{goodsDetail.title}}</view>
    
     <view class="goods-profile">
-      <view class="p"><text>¥</text> {{we.toFixed(goodsDetail.sellPrice)}}</view>
+      <view class="p"><text>¥</text>{{we.toFixed(goodsDetail.sellPrice)}}</view>
       <view class="goods-price" style='color:#aaa;text-decoration:line-through;padding: 15rpx 0rpx 0rpx 15rpx;'><text>¥</text> {{we.toFixed(goodsDetail.sellPrice*1.1)}}</view>
       <view class="r">{{goodsDetail.sellCount}}人已买</view>
     

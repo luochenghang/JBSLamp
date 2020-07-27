@@ -30,7 +30,7 @@
       </navigator>
     </view>
     <view class="item">
-      <navigator url="/pages/select-address/index" hover-class="none" class="a">
+      <navigator url="/pages/my/fav/fav" hover-class="none" class="a">
         <wxc-icon type='star' size='{{iconSize}}' color='{{iconColor}}' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
         <text class="txt">收藏中心</text>
       </navigator>
@@ -42,13 +42,14 @@
       </navigator>
     </view>
     <view class="item">
-      <navigator url="/pages/target/index" hover-class="none" class="a">
+      <navigator url="/pages/my/shopinfo/show" hover-class="none" class="a">
         <wxc-icon type='home' size='{{iconSize}}' color='{{iconColor}}' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
         <text class="txt">店铺介绍</text>
       </navigator>
     </view>
     <view class="item">
-      <navigator url="" hover-class="none" class="a">
+    <button style="width: 249rpx;height: 167.5rpx;opacity: 0;position: absolute;" open-type="contact">a</button>
+      <navigator url="url" hover-class="none" class="a">
         <wxc-icon type='weixin' size='{{iconSize}}' color='{{iconColor}}' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
         <text class="txt">加入群聊</text>
       </navigator>
@@ -62,7 +63,8 @@
     </view>
     -->
     <view class="item no-border-right">
-      <navigator url="/pages/target/index" hover-class="none" class="a">
+    <button style="width: 249rpx;height: 167.5rpx;opacity: 0;position: absolute;" open-type="share">a</button>
+      <navigator url="url" hover-class="none" class="a">
         <wxc-icon type='share' size='{{iconSize}}' color='{{iconColor}}' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
         <text class="txt">分享好友</text>
       </navigator>
@@ -80,9 +82,9 @@
       </navigator>
     </view>
     <view class="item no-border-bottom">
-      <navigator url="/pages/my/feedback/feedback" hover-class="none" class="a">
-        <wxc-icon type='no' size='{{iconSize}}' color='{{iconColor}}' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
-        <text class="txt">退出登录</text>
+      <navigator url="url" hover-class="none" class="a">
+        <wxc-icon type='more' size='{{iconSize}}' color='lightgray' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
+        <text class="txt" style='color:lightgray;text-decoration: line-through;'>暂无更多</text>
       </navigator>
     </view>
   </view>

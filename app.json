@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/goods/list",
    "pages/goods-details/index",
-
+  "pages/my/fav/fav",
+  "pages/my/shopinfo/show",
     "pages/category/category",
     "pages/my/index/index",
 

@@ -1,122 +1,42 @@
-<view class="stv-container">
-
-  <view class="tab-bar">
-    <view wx:for="{{tabs}}" wx:key="unique" data-index="{{index}}" bindtap="handlerTabTap" class="tab {{activeTab==index?'active':''}}" style="width: {{stv.windowWidth/tabs.length}}px">
-      {{item}}
-      <wxc-badge wx:if='{{orderList[index].orderList.length>0}}' class="message__badge {{activeTab==index?'active':''}}">{{orderList[index].orderList.length}}</wxc-badge>
-      <view class="{{tabClass[index]}}"></view>
-      <!--{{orderList[index].orderList.length}}-->
+<view class="container">
+  <view class="status-box">
+    <view bindtap="statusTap" class="status-label {{item.status == status ? 'active' : ''}}" wx:for="{{statusType}}" wx:key="index" data-status="{{item.status}}">
+      {{item.label}}
+      <view wx:if="{{badges[index]}}" class="weui-badge" style="position: absolute;top: 5rpx;right: 5rpx;">{{badges[index]}}</view>
     </view>
-    <view style="width: {{stv.lineWidth}}px; left: {{stv.offset/tabs.length}}px" class="under-line {{!stv.tStart? 'withAnimate': ''}}"></view>
   </view>
-
-
-  <view class="scroll-view">
-
-
-
-    <swiper class="orderListSwiper" style="width: 100%; height: 100%; overflow: visible;" current='{{activeTab}}' bindchange="swiperchange">
-      <!--
-      <view wx:if="{{orderList === 'null'}}">
-        <view wx:for="{{tabs}}" wx:key="unique">
-          <swiper-item class="one-scene">
-            <scroll-view style="height:100%" scroll-y>
-              <view class="no-order">
-                <wxc-abnor type="ORDER" title='您还没有相关订单~' button="去逛逛" bind:abnortap="toIndexPage"></wxc-abnor>
-              </view>
-            </scroll-view>
-          </swiper-item>
+  <view class="no-order" hidden="{{orderList.length!=0 ? true : false}}">
+    <image src="/images/no-order.png" class="no-order-img"></image>
+    <view class="text">暂无订单</view>
+  </view>
+  <view class="order-list" hidden="{{orderList.length!=0  ? false : true}}">
+    <view class="a-order" wx:for="{{orderList}}" wx:key="index">
+      <navigator url="/pages/order-details/index?id={{item.id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">{{item.orderNumber}}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{item.statusStr}}</view>
+      </navigator>
+      <scroll-view class="goods-img-container" scroll-x="true">
+        <view class="img-box" wx:for="{{goodsMap[item.id]}}" wx:key="index">
+          <navigator url="/pages/goods-details/index?id={{item.goodsId}}"><image src="{{item.pic}}" class="goods-img"></image></navigator>
+        </view>
+      </scroll-view>
+      <view class="goods-price">
+        共 {{item.goodsNumber}} 件商品 合计：
+        <text class="p" wx:if="{{item.score <= 0}}">¥ {{item.amountReal}}</text>
+        <text class="p" wx:if="{{item.score > 0}}">¥ {{item.amountReal}} + {{item.score}} 积分</text>
+      </view>
+      <view class="goods-info">
+        <view class="goods-des">
+          <view class="remark" wx:if="{{item.remark && item.remark != ''}}">{{item.remark}}</view>
+          <view>{{item.dateAdd}} </view>
         </view>
       </view>
--->
-      <view>
-        <view wx:key="id">
-          <swiper-item style="overflow: visible;border-radius: 50%;" class="one-scene">
-            <scroll-view style="height:100%" scroll-y>
-
-               <view class="goods-container">
-                <view class="goods-box" bindtap="toDetailsTap" data-id="">
-                  <view class="img-box">
-                    <image src="http://www.jbszm.com/webeditbook/uploadfile/20180612095739967.jpg" class="image" mode="aspectFill" lazy-load="true" />
-                  </view>
-                  <view class="goods-title">型号：金碧辉煌-6</view>
-                  <view style='display:flex;'>
-                    <view class="goods-price">¥ 3344</view>
-                    <view class="goods-price" style='color:#aaa;margin-left: 40px;'>
-                      已售1件
-                    </view>
-                  </view>
-
-                </view>
-
-                 <view class="goods-box" bindtap="toDetailsTap" data-id="">
-                  <view class="img-box">
-                    <image src="http://www.jbszm.com/webeditbook/uploadfile/20180612095739967.jpg" class="image" mode="aspectFill" lazy-load="true" />
-                  </view>
-                  <view class="goods-title">型号：金碧辉煌-6</view>
-                  <view style='display:flex;'>
-                    <view class="goods-price">¥ 3344</view>
-                    <view class="goods-price" style='color:#aaa;margin-left: 40px;'>
-                      已售1件
-                    </view>
-                  </view>
-                </view>
-
-              </view>
-              
-            </scroll-view>
-          </swiper-item>
-
-          <swiper-item style="overflow: visible;border-radius: 50%;" class="one-scene">
-            <scroll-view style="height:100%" scroll-y>
-
-     
-            </scroll-view>
-          </swiper-item>
-
-          <swiper-item style="overflow: visible;border-radius: 50%;" class="one-scene">
-            <scroll-view style="height:100%" scroll-y>
-
-              <view class="order-list">
-                <view class="a-order">
-                  <view class="order-date">
-                    <view class="date-box">下单时间：2019 17:43:40</view>
-                    <view class="status {{(item.status==-1 || item.status==4) ? '':'red'}}">代发货</view>
-                  </view>
-                  <view>
-                    <view class="a-goods">
-                      <view class="img-box">
-                        <image src="https://cdn.it120.cc/apifactory/2019/07/11/a77b1b55-dd22-4840-8e38-705ccf937db0.jpg_m" class="img" />
-                      </view>
-                      <view class="text-box">
-                        <view class="arow arow01">
-                          <view class="goods-name">goodsName</view>
-                          <view class="goods-price">¥ 1000</view>
-                        </view>
-                        <view class="arow">
-                          <view class="goods-label">数量</view>
-                          <view class="goods-num">x 1</view>
-                        </view>
-                      </view>
-                    </view>
-
-                  </view>
-                  <view class="price-box">
-                    <view class="total-price">合计：¥ 232312</view>
-
-                    <view style='width:250rpx;display: flex; flex-direction:row; justify-content: space-between;'>
-                      <view class="cancelOrder" hidden="{{item.status!=0? fslse : true}}" bindtap="cancelOrderTap" data-id="{{item.id}}">取消订单</view>
-
-                    </view>
-
-                  </view>
-                </view>
-              </view>
-            </scroll-view>
-          </swiper-item>
-        </view>
-      </view>
-    </swiper>
+      <!-- <view class="price-box">
+        <view class="btn" hidden="{{item.status==0? false : true}}" bindtap="cancelOrderTap" data-id="{{item.id}}">取消订单</view>
+        <view class="btn active" hidden="{{item.status==0? false : true}}" bindtap="toPayTap" data-id="{{item.id}}" data-money="{{item.amountReal}}" data-score="{{item.score}}">马上付款</view>
+        <view class="btn active" hidden="{{(item.status==0 || item.status==-1) ? true : false}}" bindtap="refundApply" data-id="{{item.id}}" data-amount='{{item.amountReal}}'>退换货</view>
+      </view> -->
+    </view>
   </view>
-
+  <view class="safeAreaOldMarginBttom safeAreaNewMarginBttom"></view>
 </view>

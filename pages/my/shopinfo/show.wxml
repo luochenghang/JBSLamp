@@ -1,0 +1,9 @@
+<view class="notice">
+  <view class="title">店铺信息</view>
+  <view class="text">
+    <view>联系人：罗女士</view>
+    <view bindtap="makePhoneCall" data-number="15827150785">电话：<image src="/images/phone.png"></image>15827150785</view>
+    <view>地址：湖北省直辖县级天门市景天建材城E2001</view>
+    <view style="margin-top:50rpx;">本店商品均属正品，假一罚十信誉保证。 欢迎广大顾客前来放心选购，我们将竭诚为您服务!</view>
+  </view>
+</view>
