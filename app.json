@@ -1,16 +1,9 @@
 {
   "pages": [
-<<<<<<< HEAD
     "pages/index/index",
     "pages/goods/list",
    "pages/goods-details/index",
-   
-    
-=======
-   "pages/goods-details/index",
-    "pages/index/index",
-    "pages/goods/list",
->>>>>>> 85530990742952d07eff28d86bc58b8b1385a49e
+
     "pages/category/category",
     "pages/my/index/index",
 
