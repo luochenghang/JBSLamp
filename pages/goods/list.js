@@ -10,11 +10,8 @@ Page({
     listType: 1, // 1为1个商品一行，2为2个商品一行    
     name: '', // 搜索关键词
     orderBy: '', // 排序规则
-<<<<<<< HEAD
     goodsList: [],
-=======
-    goodsList: [{ "id": 1, "title": "这是我的第一个商品", "goodsTypeId": 63, "typeDesc": "客厅灯", "coverImg": "https://luoch.cn/sources/2020-07-09/7c81949cb7cc4381b079b48881b12601.jpg", "status": 1, "costPrice": 300.0, "sellPrice": 400.0, "sellCount": 0, "detailImg": [], "bannerImg": [], "updateDate": "2020-07-23 17:16:00" }, { "id": 1, "title": "这是我的第一个商品", "goodsTypeId": 63, "typeDesc": "客厅灯", "coverImg": "https://luoch.cn/sources/2020-07-09/7c81949cb7cc4381b079b48881b12601.jpg", "status": 1, "costPrice": 300.0, "sellPrice": 400.0, "sellCount": 0, "detailImg": [], "bannerImg": [], "updateDate": "2020-07-23 17:16:00" }, { "id": 1, "title": "这是我的第ddd是我的第dddddd是我的第dddddddddd一个商品", "goodsTypeId": 63, "typeDesc": "客厅灯", "coverImg": "https://luoch.cn/sources/2020-07-09/7c81949cb7cc4381b079b48881b12601.jpg", "status": 1, "costPrice": 300.0, "sellPrice": 400.0, "sellCount": 0, "detailImg": [], "bannerImg": [], "updateDate": "2020-07-23 17:16:00" }],
->>>>>>> 85530990742952d07eff28d86bc58b8b1385a49e
+    goodsList: [],
     goodsParams: {
       status: 1, // 已上架
       queryStr: '',
@@ -30,19 +27,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-<<<<<<< HEAD
 
     this.setData({
       name:options.name,
       'goodsParams.queryStr': options.name
     })
     this.search()
-=======
-    this.setData({
-      'goodsParams.queryStr': options.name
-    })
-   // this.search()
->>>>>>> 85530990742952d07eff28d86bc58b8b1385a49e
+   
   },
 
   /**
@@ -65,12 +56,8 @@ Page({
     })
     //赋值给参数
     this.setData({
-<<<<<<< HEAD
       'goodsParams.orderBy':this.data.orderBy,
       'goodsParams.queryStr': this.data.name
-=======
-      'goodsParams.orderBy':this.data.orderBy
->>>>>>> 85530990742952d07eff28d86bc58b8b1385a49e
     })
 
     let that = this
@@ -103,16 +90,11 @@ Page({
             goodsList: []
           });
         }
-<<<<<<< HEAD
+
         
         wx.stopPullDownRefresh()
       }
      
-
-=======
-        wx.stopPullDownRefresh()
-      }
->>>>>>> 85530990742952d07eff28d86bc58b8b1385a49e
     })
   },
   /**

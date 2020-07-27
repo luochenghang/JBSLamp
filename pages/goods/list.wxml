@@ -15,23 +15,13 @@
   <view class="list1" wx:for="{{goodsList}}" wx:key="id">
     <navigator url="/pages/goods-details/index?id={{item.id}}"><image class="img" mode="aspectFill" src="{{item.coverImg}}"></image></navigator>
     <view class="goods-info">
-<<<<<<< HEAD
       <navigator url="/pages/goods-details/index?id={{item.id}}"><view class="title ellipsis">{{item.title}}</view> 
       <view class="price">¥ {{we.toFixed(item.sellPrice)}}</view>
       <view class="buy-info">
         <view class="num">已售出{{item.sellCount}}件</view>
       </view>
      </navigator>
-=======
-      <navigator url="/pages/goods-details/index?id={{item.id}}"><view class="title ellipsis">{{item.title}}</view> </navigator>
-      <view class="price">¥ {{item.sellPrice}}</view>
-      <view class="buy-info">
-        <view class="num">已售出{{item.sellCount}}件</view>
-      </view>
-      <view class="buy-info">
-        <view class="num">上架时间:{{item.createDate}}</view>
-      </view>
->>>>>>> 85530990742952d07eff28d86bc58b8b1385a49e
+     
     </view>
    
   </view>
@@ -40,29 +30,18 @@
   <view class="list2" wx:for="{{goodsList}}" wx:key="id">
     <navigator url="/pages/goods-details/index?id={{item.id}}"><image class="img" mode="aspectFill" src="{{item.coverImg}}"></image></navigator>
     <view class="goods-info">
-<<<<<<< HEAD
       <navigator url="/pages/goods-details/index?id={{item.id}}"><view class="title type2_ellipsis">{{item.title}}</view>
       <view class="price">¥ {{we.toFixed(item.sellPrice)}}</view>
       <view class="buy-info">
         <view class="num">已售出{{item.sellCount}}件</view>
       </view>
        </navigator>
-=======
-      <navigator url="/pages/goods-details/index?id={{item.id}}"><view class="title ellipsis">{{item.title}}</view></navigator>
-      <view class="price">¥ {{item.sellPrice}}</view>
-      <view class="buy-info">
-        <view class="num">已售出{{item.sellCount}}件</view>
-      </view>
-       <view class="buy-info">
-        <view class="num">上架时间:{{item.createDate}}</view>
-      </view>
->>>>>>> 85530990742952d07eff28d86bc58b8b1385a49e
+     
     </view>
     
   </view>
 </view>
 
-<<<<<<< HEAD
 <!-- 保留两位小数 -->
 <wxs module="we">
  var toFixed = function (value) {
@@ -72,5 +51,3 @@ module.exports = {
   toFixed :toFixed
 }
 </wxs>
-=======
->>>>>>> 85530990742952d07eff28d86bc58b8b1385a49e

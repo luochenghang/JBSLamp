@@ -49,7 +49,7 @@ Page({
     })    
     this.initBanners();
     this.goodsDynamic();
-   // this.getGoodsList();
+   this.getGoodsList();
   },
 
    initBanners(){
