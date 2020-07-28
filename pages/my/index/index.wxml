@@ -1,25 +1,31 @@
 <view class="container">
-  <view class='userbox' style='background: -webkit-linear-gradient(top, rgba({{bgRed}},{{bgGreen}},{{bgBlue}}, 1), rgba({{bgRed}},{{bgGreen}},{{bgBlue}}, 0.3))'>
-    <view wx:if="{{userInfo}}" class="userinfo">
-      <wxc-avatar class="userinfo-avatar" src="{{ userInfo.avatarUrl }}"> </wxc-avatar>
-      <view style='width:30rpx;'></view>
-      <view class='userinfo-text'>
-        <text class="userinfo-nickname">{{ userInfo.nickName }}</text>
-        <view style='height:10rpx;'></view>
-        
-      </view>
 
+<view wx:if="{{apiUserInfoMap}}" class="userinfo">
+		<image wx:if="{{apiUserInfoMap.base.avatarUrl}}" class="userinfo-avatar" src="{{ apiUserInfoMap.base.avatarUrl }}" background-size="cover"></image>
+		<text class="userinfo-nickname">{{ apiUserInfoMap.base.nick }}</text>
+	</view>
+  <view wx:else class="userinfo" style="margin-bottom:50rpx;">
+		<image class="userinfo-avatar" src="/images/nologin.png" background-size="cover"></image>
+		<button class="weui-btn mini-btn" plain="true" size="mini" bindtap="goLogin">立即登录</button>
+	</view>
+  <view class="asset">
+    <view class='item' bindtap='goAsset'>
+      <view>{{balance}}</view>
+      <view>余额</view>
     </view>
-    <view wx:else class="userinfo">
-      <wxc-avatar class="userinfo-avatar-no" mold="square" src="https://cdn.it120.cc/apifactory/2018/06/10/527a0d6e3b3f1ffc32748193d743da26.jpg" bindtap="relogin"> </wxc-avatar>
-      <view class='userinfo-text'>
-        <text class="userinfo-nickname"> 欢迎您 ，点我登陆 </text>
-        <view style='height:10rpx;'></view>
+    <view class='item right' bindtap='goAsset'>
+      <view>{{freeze}}</view>
+      <view>冻结</view>
+    </view>
+    <view class='item right' bindtap='goScore'>
+      <view>{{score}}</view>
+      <view>积分</view>
+    </view>
+      <view class='item right'>
+        <view>0</view>
+        <view>成长值</view>
       </view>
-    </view>
-    <view class='userInfoMask'></view>
   </view>
-
   
 
   <view class="user-menu">

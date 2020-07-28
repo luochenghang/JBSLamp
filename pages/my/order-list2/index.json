@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "订单列表",
-  "usingComponents": {
-    "wxc-abnor": "/components/wxc-abnor/dist/index",
-    "wxc-badge": "/components/wxc-badge/dist/index"
-   
-  }
-}

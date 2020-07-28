@@ -10,10 +10,6 @@
 
     "pages/my/order-list/index",
     
-    "pages/select-address/index",
-    "pages/address-add/index",
-    "pages/my/feedback/feedback",
-    "pages/shop-car/shop-car",
     
     "pages/my/location/location",
     "pages/authorize/index"

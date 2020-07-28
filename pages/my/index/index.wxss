@@ -3,10 +3,60 @@ page {
 }
 .container{
   min-height: 100%;
-  background-color: #f4f4f4;
   font-size: 24rpx;
 }
+.container{
+  min-height: 100%;
+  overflow: hidden;
+  overflow-y: hidden;
+}
+.userinfo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  width: 750rpx;
+}
+.userinfo-avatar {
+	width: 160rpx;
+	height: 160rpx;
+  border: 1rpx solid #eee;
+  border-radius: 50%;
+}
+.userinfo-nickname {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  font-size: 14px;
+}
 
+.asset {
+  display: flex;
+  border: 1px solid #eee;
+  padding-top:20rpx;
+  padding-bottom:20rpx;
+  background-color: #fff;
+
+}
+.asset .item {
+  display: flex;
+  flex-direction: column;
+  width:187rpx;
+  text-align: center;
+  font-size: 13px;
+  line-height: 20px;
+  color:#333;
+}
+.asset .right {
+  border-left: 1px solid #eee;
+}
+
+.version {
+  width:100vw;
+	font-size: 24rpx;
+	text-align: center;
+  padding: 32rpx;
+}
+
+/* 
 .userbox {
   overflow: hidden;
   display: flex;
@@ -66,7 +116,7 @@ page {
   border-top-left-radius: 70%;
   border-top-right-radius: 70%;
   background-color: #FFF;
-}
+} */
 
 .phoneNumber{
   align-items: center;
@@ -137,6 +187,8 @@ page {
   width: 100%;
   height: auto;
   background: #FFF;
+  margin-top: 50rpx;
+
 }
 
 .user-menu .item{

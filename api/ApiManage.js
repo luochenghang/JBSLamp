@@ -1,9 +1,6 @@
 let app = getApp()
 let util = require('../utils/util.js')
-const ApiUrl = {
-  develop: 'http://localhost:9001/',
-  onLine: 'https://luoch.cn/'
-}
+
 
 
 const header = {
@@ -32,13 +29,18 @@ function send(requestInfo, methodType) {
       success(res) {
         if (res.data.code == 1000) {
           resolve(res)
-        } else {
+        }else if (data.code === 3000) {
+          wx.navigateTo({
+            url: '/pages/authorize/index',
+          })
+          reject()
+        }else {
           util.loginTip(res.data.msg)
         }
       },
       fail(res) {
         reject(res)
-        // util.loginTip('服务器开小差了')
+        util.loginTip('服务器开小差了')
       },
       complete(res) {
         wx.hideLoading()
@@ -47,6 +49,5 @@ function send(requestInfo, methodType) {
   })
 }
 module.exports = {
-  ApiUrl,
   send
 };

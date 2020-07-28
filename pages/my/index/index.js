@@ -2,9 +2,6 @@ const app = getApp()
 
 Page({
   data: {
-    aboutUsTitle: '',
-    aboutUsContent: '',
-    servicePhoneNumber: '',
     balance: 0,
     freeze: 0,
     score: 0,
@@ -16,24 +13,22 @@ Page({
     
   },
   onLoad() {
-    let that = this;
-    that.setData({
-      
-      background_color: "#00afb4",
-      bgRed: 0,
-      bgGreen: 175,
-      bgBlue: 180
-    })
 
-   
+    var userInfo = app.globalData.vipInfo
+    console.log(app.globalData.vipInfo);
+    
+    if (userInfo) {
+      that.setData({
+        userInfo: userInfo,
+      })
+    }
+  },
+  goLogin(){
+    wx.navigateTo({
+      url: '/pages/authorize/index',
+    })
   },
   onShow() {
-    var that = this;
-    that.getUserApiInfo();
-    that.getUserAmount();
-    that.checkScoreSign();
-    that.getAboutUs();
-    that.getservicePhoneNumber();
 
     var userInfo = wx.getStorageSync('userInfo')
     if (userInfo) {
