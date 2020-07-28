@@ -34,12 +34,12 @@ page {
   padding-top:20rpx;
   padding-bottom:20rpx;
   background-color: #fff;
-
+  width: 100%;
 }
 .asset .item {
   display: flex;
   flex-direction: column;
-  width:187rpx;
+  width: 33.33333%;
   text-align: center;
   font-size: 13px;
   line-height: 20px;

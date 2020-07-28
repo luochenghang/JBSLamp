@@ -13,7 +13,8 @@ App({
     code: '', // login code
     M_token: null, // 定位token
     token: '', // token
-    phone: null
+    phone: null,
+    isLogin:false
   },
   
   onLaunch: function() {
@@ -117,6 +118,7 @@ App({
           let { data } = res.data
           this.parseRes(res.data, () => {
             this.globalData.vipInfo = data
+            this.globalData.isLogin = true
             if (this.vipInfoReadyCallback) {
               this.vipInfoReadyCallback(data)
             }

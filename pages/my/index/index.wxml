@@ -1,30 +1,26 @@
 <view class="container">
 
-<view wx:if="{{apiUserInfoMap}}" class="userinfo">
-		<image wx:if="{{apiUserInfoMap.base.avatarUrl}}" class="userinfo-avatar" src="{{ apiUserInfoMap.base.avatarUrl }}" background-size="cover"></image>
-		<text class="userinfo-nickname">{{ apiUserInfoMap.base.nick }}</text>
+<view wx:if="{{userInfo!=null}}" class="userinfo">
+		<image class="userinfo-avatar" src="{{ userInfo.userBase.portrait }}" background-size="cover"></image>
+		<text class="userinfo-nickname">{{ userInfo.userBase.nickName }}</text>
 	</view>
   <view wx:else class="userinfo" style="margin-bottom:50rpx;">
 		<image class="userinfo-avatar" src="/images/nologin.png" background-size="cover"></image>
 		<button class="weui-btn mini-btn" plain="true" size="mini" bindtap="goLogin">立即登录</button>
 	</view>
   <view class="asset">
-    <view class='item' bindtap='goAsset'>
-      <view>{{balance}}</view>
-      <view>余额</view>
+    <view class='item'>
+      <view>{{orderCount}}</view>
+      <view>已购次数</view>
     </view>
-    <view class='item right' bindtap='goAsset'>
-      <view>{{freeze}}</view>
-      <view>冻结</view>
+    <view class='item right'>
+      <view>{{favCount}}</view>
+      <view>收藏数量</view>
     </view>
-    <view class='item right' bindtap='goScore'>
-      <view>{{score}}</view>
-      <view>积分</view>
+    <view class='item right'>
+      <view>¥ {{we.toFixed(savePrice)}}</view>
+      <view>节省金额</view>
     </view>
-      <view class='item right'>
-        <view>0</view>
-        <view>成长值</view>
-      </view>
   </view>
   
 
@@ -96,3 +92,13 @@
   </view>
 
 </view>
+
+<!-- 保留两位小数 -->
+<wxs module="we">
+ var toFixed = function (value) {
+ return value.toFixed(2);
+}
+module.exports = {
+  toFixed :toFixed
+}
+</wxs>

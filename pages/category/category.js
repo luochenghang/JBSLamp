@@ -1,4 +1,4 @@
-
+const app = getApp()
 const ApiManager = require('../../api/ApiManage.js')
 const ApiConst = require('../../api/ApiConst.js')
 let util = require('../../utils/util.js')
@@ -23,6 +23,7 @@ Page({
     onLoadStatus: true,
     loadingMoreHidden: true,
     scrolltop: 0,
+    isLogin: app.globalData.isLogin
   },
 //   /**
 //    * 生命周期函数--监听页面加载
@@ -32,7 +33,28 @@ Page({
       withShareTicket: true
     })
     this.categories();
+    if(isLogin){
+      this.getUserFav()
+    }
+
   },
+
+  getUserFav(){
+    let requestData = {
+      url: ApiConst.getPreOrderByUserId,
+      data: {}
+    }
+    let that = this;
+    ApiManager.send(requestData, 'GET').then(res => {
+
+      if (res.data.code == 1000) {
+        if (res.data.data != null){
+          
+        }
+      }
+    })
+  },
+
    categories() {
     wx.showLoading({
       title: '加载中',

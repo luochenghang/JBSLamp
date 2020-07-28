@@ -2,12 +2,12 @@ const app = getApp()
 
 Page({
   data: {
-    balance: 0,
-    freeze: 0,
-    score: 0,
-    score_sign_continuous: 0,
+    savePrice: 0.00,
+    favCount: 0,
+    orderCount: 0,
     iconSize: 45,
-    iconColor: '#999999'
+    iconColor: '#999999',
+    userInfo : null
   },
   onPullDownRefresh: function () {
     
@@ -16,12 +16,15 @@ Page({
 
     var userInfo = app.globalData.vipInfo
     console.log(app.globalData.vipInfo);
-    
-    if (userInfo) {
-      that.setData({
+    if (userInfo != null){
+      this.setData({
         userInfo: userInfo,
+        savePrice: userInfo.userBase.savePrice,
+        favCount:userInfo.userBase.favCount,
+        orderCount: userInfo.userBase.orderCount
       })
     }
+      
   },
   goLogin(){
     wx.navigateTo({
@@ -30,10 +33,13 @@ Page({
   },
   onShow() {
 
-    var userInfo = wx.getStorageSync('userInfo')
-    if (userInfo) {
-      that.setData({
+    var userInfo = app.globalData.vipInfo
+    if (userInfo != null) {
+      this.setData({
         userInfo: userInfo,
+        savePrice: userInfo.userBase.savePrice,
+        favCount: userInfo.userBase.favCount,
+        orderCount: userInfo.userBase.orderCount
       })
     }
 
