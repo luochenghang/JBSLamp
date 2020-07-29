@@ -5,9 +5,8 @@ let util = require('../../../utils/util.js')
 
 Page({
   data: {
-    statusType: [
-      {
-        status: 9999,
+    statusType: [{
+        status: null,
         label: '全部'
       },
       {
@@ -19,8 +18,8 @@ Page({
         label: '已完成'
       }
     ],
-    status: 9999,
-    orderList:[],
+    status: null,
+    orderList: [],
     badges: [0, 0, 0, 0, 0]
   },
   statusTap: function(e) {
@@ -30,68 +29,49 @@ Page({
     });
     this.onShow();
   },
-  
+
   onLoad: function(options) {
-    this.onShow();
   },
   onReady: function() {
     // 生命周期函数--监听页面初次渲染完成
 
   },
-  
+
   onShow: function() {
-    // AUTH.checkHasLogined().then(isLogined => {
-    //   if (isLogined) {
-    //     this.doneShow();
-    //   } else {
-    //     wx.showModal({
-    //       title: '提示',
-    //       content: '本次操作需要您的登录授权',
-    //       cancelText: '暂不登录',
-    //       confirmText: '前往登录',
-    //       success(res) {
-    //         if (res.confirm) {
-    //           wx.switchTab({
-    //             url: "/pages/my/index"
-    //           })
-    //         } else {
-    //           wx.navigateBack()
-    //         }
-    //       }
-    //     })
-    //   }
-    // })
+
+    if (!app.globalData.isLogin) {
+      wx.navigateTo({
+        url: '/pages/authorize/index',
+      })
+    }
+    this.doneShow();
   },
   doneShow() {
     // 获取订单列表
-    var that = this;
-    var postData = {
-      token: wx.getStorageSync('token')
+    // 搜索商品
+    wx.showLoading({
+      title: '加载中',
+    })
+    let that = this
+    var status = {
     };
-    if (this.data.hasRefund) {
-      postData.hasRefund = true
-    }
-    if (!postData.hasRefund) {
-      postData.status = that.data.status;
-    }
-    if (postData.status == 9999) {
-      postData.status = ''
-    }
-    this.getOrderStatistics();
-    WXAPI.orderList(postData).then(function(res) {
-      if (res.code == 0) {
-        that.setData({
-          orderList: res.data.orderList,
-          logisticsMap: res.data.logisticsMap,
-          goodsMap: res.data.goodsMap
-        });
-      } else {
-        that.setData({
-          orderList: null,
-          logisticsMap: {},
-          goodsMap: {}
-        });
+    if (this.data.status != null){
+      status = {
+        'status': this.data.status
       }
+    }
+
+    let requestData = {
+      url: ApiConst.getAllOrderByUserId,
+      data: status
+    }
+    ApiManager.send(requestData, 'GET').then(res => {
+      if (res.data.code == 1000) {
+        that.setData({
+          orderList: res.data.data
+        })
+      }
+      wx.stopPullDownRefresh()
     })
   },
   onHide: function() {

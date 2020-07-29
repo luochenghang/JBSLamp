@@ -32,27 +32,7 @@ Page({
     wx.showShareMenu({
       withShareTicket: true
     })
-    this.categories();
-    if(isLogin){
-      this.getUserFav()
-    }
-
-  },
-
-  getUserFav(){
-    let requestData = {
-      url: ApiConst.getPreOrderByUserId,
-      data: {}
-    }
-    let that = this;
-    ApiManager.send(requestData, 'GET').then(res => {
-
-      if (res.data.code == 1000) {
-        if (res.data.data != null){
-          
-        }
-      }
-    })
+    //this.categories();
   },
 
    categories() {
@@ -203,7 +183,7 @@ Page({
   },
  
   onShow() {
-   
+    this.categories();
   },
   // 下拉刷新
   onPullDownRefresh() {

@@ -2,15 +2,13 @@
   "pages": [
     "pages/index/index",
     "pages/goods/list",
-   "pages/goods-details/index",
-  "pages/my/fav/fav",
-  "pages/my/shopinfo/show",
+    "pages/goods-details/index",
+    "pages/my/fav/fav",
+    "pages/my/shopinfo/show",
     "pages/category/category",
     "pages/my/index/index",
-
+    "pages/my/order-details/index",
     "pages/my/order-list/index",
-    
-    
     "pages/my/location/location",
     "pages/authorize/index"
   ],

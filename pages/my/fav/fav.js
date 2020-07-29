@@ -5,11 +5,19 @@ let util = require('../../../utils/util.js')
 
 Page({
   data: {
-    goods:[],
+    goods: [],
+    isLogin: false,
   },
-  onLoad: function (options) {
-  },
-  onShow: function () {
+  onLoad: function(options) {},
+  onShow: function() {
+    this.setData({
+      isLogin: app.globalData.isLogin
+    })
+    
+    this.goodsFavList();
+
+
+
     // AUTH.checkHasLogined().then(isLogined => {
     //   this.setData({
     //     wxlogin: isLogined
@@ -19,42 +27,51 @@ Page({
     //   }
     // })
   },
-  //  goodsFavList() {
-  //   // 搜索商品
-  //   wx.showLoading({
-  //     title: '加载中',
-  //   })
-  //   const _data = {
-  //     token: wx.getStorageSync('token'),
-  //     page: 1,
-  //     pageSize: 10000,
-  //   }    
-  //   const res = await WXAPI.goodsFavList(_data)
-  //   wx.hideLoading()
-  //   if (res.code == 0) {
-  //     this.setData({
-  //       goods: res.data,
-  //     })
-  //   } else {
-  //     this.setData({
-  //       goods: null
-  //     })
-  //   }
-  // },
-  //  removeFav(e){
-  //   const id = e.currentTarget.dataset.id
-  //   const res = await WXAPI.goodsFavDelete(wx.getStorageSync('token'), '', id)
-  //   if (res.code == 0) {
-  //     wx.showToast({
-  //       title: '取消收藏',
-  //       icon: 'success'
-  //     })
-  //     this.goodsFavList()
-  //   } else {
-  //     wx.showToast({
-  //       title: res.msg,
-  //       icon: 'none'
-  //     })
-  //   }
-  // },
+  goodsFavList() {
+    if (!app.globalData.isLogin) {
+      wx.navigateTo({
+        url: '/pages/authorize/index',
+      })
+    }
+    // 搜索商品
+    wx.showLoading({
+      title: '加载中',
+    })
+    let that = this
+    let requestData = {
+      url: ApiConst.getPreOrderByUserId,
+      data: {}
+    }
+    ApiManager.send(requestData, 'GET').then(res => {
+      if (res.data.code == 1000) {
+        that.setData({
+          goods: res.data.data
+        })
+      }
+
+
+      wx.stopPullDownRefresh()
+    })
+  },
+  //删除收藏
+  removeFav(e) {
+    const id = e.currentTarget.dataset.id
+
+    let requestData = {
+      url: ApiConst.updPreOrderIsCollect,
+      data: {
+        "id": id,
+        "isCollect": 0
+      }
+    }
+    ApiManager.send(requestData, 'POST').then(res => {
+      if (res.data.code == 1000) {
+        this.goodsFavList();
+        wx.showToast({
+          title: '取消收藏',
+          icon: 'success',
+        })
+      }
+    })
+  },
 })

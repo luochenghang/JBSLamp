@@ -25,9 +25,9 @@
         <image src='/images/share/share1.png'></image>
         <button open-type='share'></button>
       </view>
-      <view class='item' bindtap="drawSharePic">
+      <!-- <view class='item' bindtap="drawSharePic">
         <image src='/images/share/share2.png'></image>
-      </view>
+      </view> -->
     </view>    
   </view>
 
@@ -39,14 +39,15 @@
     </view>
   </view>
 
-  <view wx:if="{{!curGoodsKanjia}}" class="footer-box">
+  <view  class="footer-box">
     <view class="contact">
       <button type="primary" open-type="contact" />
       <image src="/images/icon/kf.svg"></image>
     </view>
    
-    <image bindtap="addPreOrder" class="fav-icon" src="/images/icon/fav{{faved?'1':'0'}}.svg"></image>
-    <view  class="join-shop-cart" bindtap="addPreOrder">立即收藏</view>
+    <image bindtap="addPreOrder" data-isCollect="{{goodsDetail.isCollect==1?'0':'1'}}" class="fav-icon" src="/images/icon/fav{{goodsDetail.isCollect==1?'1':'0'}}.svg"></image>
+    <view wx:if="{{goodsDetail.isCollect==1}}"  class="join-shop-cart" data-isCollect="0" bindtap="addPreOrder">取消收藏</view>
+    <view wx:else  class="join-shop-cart" data-isCollect="1" bindtap="addPreOrder">立即收藏</view>
     <view  class="now-buy"  bindtap="makePhoneCall">联系店家</view>
     
   </view>

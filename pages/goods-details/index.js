@@ -4,31 +4,22 @@ let util = require('../../utils/util.js')
 const app = getApp();
 Page({
   data: {
-    wxlogin: true,
-
     goodsDetail: {},
     goodsId: 0,
-    hasMoreSelect: false,
-    selectSize: null,
-    selectSizePrice: 0,
-    selectSizeOPrice: 0,
-    totalScoreToPay: 0,
-    shopNum: 0,
     hideShopPopup: true,
-    buyNumber: 0,
-    buyNumMin: 1,
-    buyNumMax: 0,
-
-    propertyChildIds: "",
-    propertyChildNames: "",
-    canSubmit: false, //  选中规格尺寸时候是否允许加入购物车
-    shopType: "addShopCar", //购物类型，加入购物车或立即购买，默认为加入购物车
+    isLogin: app.globalData.isLogin,
   },
   onLoad: function (options) {
     this.setData({
       goodsId: options.id
     })
     this.getGoodsDetail()
+  },
+
+  onShow:function(){
+    this.setData({
+      isLogin: app.globalData.isLogin
+    })
   },
 
   getGoodsDetail() {
@@ -49,8 +40,6 @@ Page({
         })
         wx.stopPullDownRefresh()
       }
-
-
     })
   },
 
@@ -58,7 +47,7 @@ Page({
   makePhoneCall: function () {
     var that = this;
     wx.makePhoneCall({
-      phoneNumber: '18818569663',
+      phoneNumber: '15827150785',
       success: function (res) { },
       fail: function (res) {
         wx.showModal({
@@ -73,11 +62,73 @@ Page({
   // 图片点击放大 
   previewImg: function (e) {
     var src = e.currentTarget.dataset.src;//获取data-src  循环单个图片链接
-    var imgList = e.currentTarget.dataset.effect_pic;//获取data-effect_pic   图片列表
+    var detailImgs = this.data.goodsDetail.detailImg;//   图片列表
+    var imgs = [];
+
+    for (var i = 0; i < detailImgs.length; i++){
+      imgs.push(detailImgs[i].url);
+    }
+    console.log(imgs)
     //图片预览
     wx.previewImage({
       current: src, // 当前显示图片的http链接
-      urls: imgList // 需要预览的图片http链接列表
+      urls: imgs // 需要预览的图片http链接列表
     })
+  },
+
+  addPreOrder:function(e) {
+    var that = this
+    var isCollect = e.currentTarget.dataset.iscollect;
+    //添加收藏
+    if(isCollect == 1){
+      //判断是否登录
+      if (!app.globalData.isLogin){
+        wx.navigateTo({
+          url: '/pages/authorize/index',
+        })
+      }else{
+        let requestData = {
+          url: ApiConst.addPreOrder,
+          data: {
+            "goodsId": that.data.goodsId,
+          }
+        }
+        ApiManager.send(requestData, 'POST').then(res => {
+          if (res.data.code == 1000) {
+            this.getGoodsDetail();
+            wx.showToast({
+              title: '操作成功',
+              icon: 'none',
+              duration: 1000
+            })
+          }
+        })
+      }
+     
+
+    }else{
+    //删除收藏
+      let requestData = {
+        url: ApiConst.updPreOrderIsCollect,
+        data: { 
+          "id": that.data.goodsId,
+          "isCollect": isCollect
+         }
+      }
+      ApiManager.send(requestData, 'POST').then(res => {
+        if (res.data.code == 1000) {
+          this.getGoodsDetail();
+          wx.showToast({
+            title: '操作成功',
+            icon: 'none',
+            duration: 1000
+          })
+          
+        }
+       
+      })
+    }
+    
+    
   },
 })

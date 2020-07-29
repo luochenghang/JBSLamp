@@ -16,3 +16,9 @@ export const getAllGoodsType = baseUrl + "lampApp/v1/getAllGoodsType"//查询全
 export const getGoodsById = baseUrl + "lampApp/v1/getGoodsById"//查询商品详细信息
 
 export const getPreOrderByUserId = baseUrl + "lampApp/v1/getPreOrderByUserId"//查询用户收藏商品
+export const addPreOrder = baseUrl + "lampApp/v1/addPreOrder"//添加收藏商品
+export const updPreOrderIsCollect = baseUrl + "lampApp/v1/updPreOrderIsCollect"//更新收藏商品的状态 删除已收藏的 
+
+
+export const getAllOrderByUserId = baseUrl + "lampApp/v1/getAllOrderByUserId"//获取订单根据状态
+export const getOrderById = baseUrl + "lampApp/v1/getOrderById"//获取订单

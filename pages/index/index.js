@@ -74,7 +74,9 @@ Page({
     })
   },
   onShow: function(e){
-    
+    this.initBanners();
+    this.goodsDynamic();
+    this.getGoodsList();
   },
 
    goodsDynamic(){

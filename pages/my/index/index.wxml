@@ -25,14 +25,14 @@
   
 
   <view class="user-menu">
-    <view class="item">
-      <navigator url="/pages/my/order-list/index" hover-class="none" class="a">
+    <view class="item" bindtap="skipOrder">
+      <navigator url="" hover-class="none" class="a">
         <wxc-icon type='feedback' size='{{iconSize}}' color='{{iconColor}}' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
         <text class="txt">订单记录</text>
       </navigator>
     </view>
-    <view class="item">
-      <navigator url="/pages/my/fav/fav" hover-class="none" class="a">
+    <view class="item" bindtap='skipFav'>
+      <navigator url="" hover-class="none" class="a">
         <wxc-icon type='star' size='{{iconSize}}' color='{{iconColor}}' style='margin:15rpx 0 10rpx 0;'></wxc-icon>
         <text class="txt">收藏中心</text>
       </navigator>

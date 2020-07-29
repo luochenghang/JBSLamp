@@ -34,7 +34,7 @@ swiper-item image {
 }
 .goods-info-fx {
   position: absolute;
-  right: 35rpx;
+  right: -40rpx;
   bottom: 60rpx;
   display: flex;
   align-items: center;
@@ -133,6 +133,7 @@ swiper-item image {
 }
 .goods-text image{
   width: 100%;
+  margin-top: 20rpx;
 }
 .des-imgs{
   width:100%;

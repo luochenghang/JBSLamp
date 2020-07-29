@@ -34,7 +34,7 @@
           </view>
         </view>
         <!-- 这里可能存在没有数据，表示用户还没有登录，此时应该显示为收藏状态 -->
-        <image data-id="{{item.id}}" bindtap="addShopCar" class="car" src="/images/icon/fav{{item.isCollect==1?1:0}}.svg"></image>
+        <image data-id="{{item.id}}" class="car" src="/images/icon/fav{{item.isCollect==1?1:0}}.svg"></image>
         <!-- /images/icon/fav0 -->
       </view>
 

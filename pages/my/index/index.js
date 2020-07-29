@@ -1,5 +1,6 @@
 const app = getApp()
-
+const ApiManager = require('../../../api/ApiManage.js')
+const ApiConst = require('../../../api/ApiConst.js')
 Page({
   data: {
     savePrice: 0.00,
@@ -7,44 +8,54 @@ Page({
     orderCount: 0,
     iconSize: 45,
     iconColor: '#999999',
-    userInfo : null
+    userInfo: null
   },
-  onPullDownRefresh: function () {
-    
+  onPullDownRefresh: function() {
+
   },
   onLoad() {
-
-    var userInfo = app.globalData.vipInfo
-    console.log(app.globalData.vipInfo);
-    if (userInfo != null){
+    if (app.globalData.userInfo) {
       this.setData({
-        userInfo: userInfo,
-        savePrice: userInfo.userBase.savePrice,
-        favCount:userInfo.userBase.favCount,
-        orderCount: userInfo.userBase.orderCount
+        userInfo: app.globalData.userInfo,
       })
+    } else {
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          userInfo: res.userInfo,
+        })
+      }
     }
-      
   },
-  goLogin(){
+  goLogin() {
     wx.navigateTo({
       url: '/pages/authorize/index',
     })
   },
   onShow() {
-
-    var userInfo = app.globalData.vipInfo
-    if (userInfo != null) {
-      this.setData({
-        userInfo: userInfo,
-        savePrice: userInfo.userBase.savePrice,
-        favCount: userInfo.userBase.favCount,
-        orderCount: userInfo.userBase.orderCount
+    //特殊方法 需要刷新数据
+    var token = app.globalData.token
+    if (token != '') {
+      wx.request({
+        url: ApiConst.getUser,
+        method: 'get',
+        header: {
+          'token': app.globalData.token
+        },
+        success: res => {
+          app.globalData.vipInfo = res.data.data
+          var userInfo = res.data.data
+          this.setData({
+            userInfo: userInfo,
+            savePrice: userInfo.userBase.savePrice,
+            favCount: userInfo.userBase.favCount,
+            orderCount: userInfo.userBase.orderCount
+          })
+        }
       })
     }
 
   },
-  aboutUs: function () {
+  aboutUs: function() {
     var that = this
     wx.showModal({
       title: '家贝斯照明',
@@ -52,29 +63,51 @@ Page({
       showCancel: false
     })
   },
-  makePhoneCall: function () {
+  skipFav: function() {
+    if (!app.globalData.isLogin) {
+      wx.navigateTo({
+        url: '/pages/authorize/index',
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/my/fav/fav',
+      })
+    }
+  },
+  skipOrder: function() {
+    if (!app.globalData.isLogin) {
+      wx.navigateTo({
+        url: '/pages/authorize/index',
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/my/order-list/index',
+      })
+    }
+  },
+  makePhoneCall: function() {
     var that = this;
     wx.makePhoneCall({
-      phoneNumber: '18818569663',
-      success: function (res) { },
-      fail: function (res) {
+      phoneNumber: '15827150785',
+      success: function(res) {},
+      fail: function(res) {
         wx.showModal({
           title: '呼叫失败',
           content: '请稍后再试',
           showCancel: false,
         })
       },
-      complete: function (res) { },
+      complete: function(res) {},
     })
   },
   onShareAppMessage() {
     let _data = {
       title: '家贝斯照明',
       path: '/pages/index/index',
-      success: function (res) {
+      success: function(res) {
         // 转发成功
       },
-      fail: function (res) {
+      fail: function(res) {
         // 转发失败
       }
     }

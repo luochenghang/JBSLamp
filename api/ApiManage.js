@@ -29,7 +29,7 @@ function send(requestInfo, methodType) {
       success(res) {
         if (res.data.code == 1000) {
           resolve(res)
-        }else if (data.code === 3000) {
+        } else if (res.data.code === 3000) {
           wx.navigateTo({
             url: '/pages/authorize/index',
           })
