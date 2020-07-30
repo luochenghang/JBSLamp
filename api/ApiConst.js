@@ -22,3 +22,12 @@ export const updPreOrderIsCollect = baseUrl + "lampApp/v1/updPreOrderIsCollect"/
 
 export const getAllOrderByUserId = baseUrl + "lampApp/v1/getAllOrderByUserId"//获取订单根据状态
 export const getOrderById = baseUrl + "lampApp/v1/getOrderById"//获取订单
+
+export const getShopInfo = baseUrl + "lampApp/v1/getShopInfo"//获取商铺信息
+
+// export const decipherPhone = baseUrl + "lampApp/v1/decipherPhone"//绑定手机号
+getAddressList
+export const getAddressList = baseUrl + "lampApp/v1/getAddressList"//查询用户的所有地址列表
+export const getAddressById = baseUrl + "lampApp/v1/getAddressById"//查询用户的地址根据id
+export const addAddress = baseUrl + "lampApp/v1/addAddress"//添加或者修改用户的地址
+export const deleteAddess = baseUrl + "lampApp/v1/delAddress"//删除用户的地址记录

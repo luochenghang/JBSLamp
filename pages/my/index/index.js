@@ -111,5 +111,55 @@ Page({
         // 转发失败
       }
     }
-  }
+  },
+  relogin(){
+
+    if(app.globalData.isAdmin){//已经登录过了 不需要在登陆了
+      wx.navigateTo({
+        url: '/pages/my/chart/chart',
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/my/login/login',
+      })
+    }
+
+  },
+  //个人小程序没有绑定手机权限
+  // getPhoneNumber: function (e) {
+  //   console.log(app.globalData.userInfo.phoneNo);
+  //   if (app.globalData.userInfo.phoneNo!=null){
+  //     return;
+  //   }
+
+  //   if (!e.detail.errMsg || e.detail.errMsg != "getPhoneNumber:ok") {
+  //     wx.showModal({
+  //       title: '提示',
+  //       content: e.detail.errMsg,
+  //       showCancel: false
+  //     })
+  //     return;
+  //   }
+
+  //   let params = app.globalData.loginData
+  //   params.code = app.globalData.code
+  //   // params.nickName = app.globalData.userInfo.nickName
+  //   // params.portrait = app.globalData.userInfo.avatarUrl
+  //   // params.sex = app.globalData.userInfo.gender
+  //   // params.portrait = app.globalData.userInfo.avatarUrl
+  //   // params.sign = app.globalData.loginData.signature
+  //   let requestData = {
+  //     url: ApiConst.decipherPhone,
+  //     data: params
+  //   }
+  //   ApiManager.send(requestData, 'POST').then(res => {
+  //     if(res.data.code==1000){
+  //       wx.showToast({
+  //         title: '绑定成功',
+  //         icon: 'success',
+  //         duration: 2000
+  //       })
+  //     }
+  //   })
+  // },
 })

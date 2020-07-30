@@ -1,15 +1,28 @@
 const app = getApp();
-
+const ApiManager = require('../../../api/ApiManage.js')
+const ApiConst = require('../../../api/ApiConst.js')
+let util = require('../../../utils/util.js')
 Page({
   data: {
-  
+    shopInfo:null
   },
   onLoad: function (options) {
    
   },
   onShareAppMessage() {
   },
-
+  onShow: function () {
+    var that = this
+    let requestData = {
+      url: ApiConst.getShopInfo,
+      data: {}
+    }
+    ApiManager.send(requestData, 'GET').then(res => {
+      that.setData({
+        shopInfo: res.data.data
+      })
+    })
+  },
   makePhoneCall: function (e) {
     let number = e.currentTarget.dataset.number
     var that = this;

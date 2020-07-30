@@ -1,3 +1,7 @@
+const ApiManager = require('../../../api/ApiManage.js')
+const ApiConst = require('../../../api/ApiConst.js')
+let util = require('../../../utils/util.js')
+
 var countTooGetLocation = 0;
 var total_micro_second = 0;
 var starRun = 0;
@@ -87,6 +91,20 @@ Page({
     this.getTgLocation()
     console.log("onLoad")
     count_down(this);
+  },
+  onShow: function () {
+    var that = this
+    let requestData = {
+      url: ApiConst.getShopInfo,
+      data: {}
+    }
+    ApiManager.send(requestData, 'GET').then(res => {
+      that.setData({
+        shopInfo: res.data.data,
+        tglatitude: res.data.data.lat,
+        tglongitude: res.data.data.lng
+      })
+    })
   },
   //****************************
   openLocation:function (){

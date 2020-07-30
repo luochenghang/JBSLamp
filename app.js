@@ -6,6 +6,7 @@ let util = require('./utils/util.js')
 App({
 
   globalData: {
+    isAdmin:false, //判断是否已经登录后端统计了
     userInfo: null,
     vipInfo: null,
     // 登录所需要的数据

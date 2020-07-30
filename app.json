@@ -1,6 +1,10 @@
 {
   "pages": [
+   
     "pages/index/index",
+    "pages/my/chart/chart",
+    "pages/my/login/login",
+    "pages/my/select-address/index",
     "pages/goods/list",
     "pages/goods-details/index",
     "pages/my/fav/fav",
@@ -9,6 +13,7 @@
     "pages/my/index/index",
     "pages/my/order-details/index",
     "pages/my/order-list/index",
+    "pages/my/address-add/index",
     "pages/my/location/location",
     "pages/authorize/index"
   ],

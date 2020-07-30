@@ -1,6 +1,6 @@
 <view class='shopInfo'>
   <view class='shopname'>
-    地址：湖北省天门市景天建材市场附件
+    地址：{{shopInfo.address}}
   </view>
 </view>
 <view class="mainView">

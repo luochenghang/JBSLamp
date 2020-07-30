@@ -40,7 +40,7 @@ function send(requestInfo, methodType) {
       },
       fail(res) {
         reject(res)
-        util.loginTip('服务器开小差了')
+        //util.loginTip('服务器开小差了')
       },
       complete(res) {
         wx.hideLoading()
